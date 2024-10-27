@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Web Viewer</title>
+    <style>
+        #container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        #urlInput {
+            width: 300px;
+            padding: 10px;
+        }
+        #frame {
+            width: 100%;
+            height: 90vh;
+            border: none;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <input type="text" id="urlInput" placeholder="Enter URL (include https://)">
+        <button onclick="loadPage()">Go</button>
+    </div>
+    <iframe id="frame"></iframe>
+
+    <script>
+        function loadPage() {
+            var url = document.getElementById('urlInput').value;
+            document.getElementById('frame').src = url;
+        }
+        
+        // Also allow Enter key to work
+        document.getElementById('urlInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                loadPage();
+            }
+        });
+    </script>
+</body>
+</html>
